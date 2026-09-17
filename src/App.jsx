@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import './App.css'
 import Home from './pages/Home'
+import About from './pages/About'
+import Academics from './pages/Academics'
+import Admissions from './pages/Admissions'
 
 function App() {
   return (
@@ -10,14 +14,11 @@ function App() {
 
           <Route path="/" element={<Home />} />
 
-          {/* <Route path="/login" element={<Login />} />
+          <Route path="/about" element={<About />} />
 
-          <Route path="/register" element={<Register />} />
+          <Route path="/academics" element={<Academics />} />
 
-          <Route
-            path="/verify-email"
-            element={<VerifyEmail />}
-          /> */}
+          <Route path="/admissions" element={<Admissions />} />
 
         </Routes>
       </BrowserRouter>

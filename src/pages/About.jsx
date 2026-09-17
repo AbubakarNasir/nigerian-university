@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import "./home.css";
+import "./about.css";
 
 /* ---------------------------- Icon components ---------------------------- */
 
@@ -23,31 +23,22 @@ const IconClose = (props) => (
   </svg>
 );
 
-const IconArrowRight = (props) => (
-  <svg viewBox="0 0 24 24" fill="none" {...props}>
-    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const IconGradCap = (props) => (
-  <svg viewBox="0 0 24 24" fill="none" {...props}>
-    <path d="M12 3L2 8l10 5 10-5-10-5z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-    <path d="M6 10.5V16c0 1.5 2.5 3 6 3s6-1.5 6-3v-5.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M21 9v6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-  </svg>
-);
-
-const IconBook = (props) => (
-  <svg viewBox="0 0 24 24" fill="none" {...props}>
-    <path d="M4 5.5C4 4.7 4.7 4 5.5 4H12v16H5.5c-.8 0-1.5-.7-1.5-1.5v-13z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-    <path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H12v16h6.5c.8 0 1.5-.7 1.5-1.5v-13z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-  </svg>
-);
-
-const IconStar = (props) => (
+const IconPin = (props) => (
   <svg viewBox="0 0 24 24" fill="none" {...props}>
     <path
-      d="M12 2c.6 3.6 2.4 5.4 6 6-3.6.6-5.4 2.4-6 6-.6-3.6-2.4-5.4-6-6 3.6-.6 5.4-2.4 6-6z"
+      d="M12 21s7-6.3 7-11.5C19 5.9 15.9 3 12 3S5 5.9 5 9.5C5 14.7 12 21 12 21z"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinejoin="round"
+    />
+    <circle cx="12" cy="9.5" r="2.3" stroke="currentColor" strokeWidth="1.6" />
+  </svg>
+);
+
+const IconHeart = (props) => (
+  <svg viewBox="0 0 24 24" fill="none" {...props}>
+    <path
+      d="M12 20.5s-7.5-4.6-9.8-9.3C.6 7.7 2.2 4.5 5.4 3.9c2-.4 3.9.5 5 2.2 1.1-1.7 3-2.6 5-2.2 3.2.6 4.8 3.8 3.2 7.3-2.3 4.7-9.8 9.3-9.8 9.3v0z"
       stroke="currentColor"
       strokeWidth="1.6"
       strokeLinejoin="round"
@@ -55,10 +46,11 @@ const IconStar = (props) => (
   </svg>
 );
 
-const IconGlobe = (props) => (
+const IconAperture = (props) => (
   <svg viewBox="0 0 24 24" fill="none" {...props}>
-    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
-    <path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3z" stroke="currentColor" strokeWidth="1.6" />
+    <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" strokeWidth="1.6" />
+    <circle cx="12" cy="12" r="4.5" stroke="currentColor" strokeWidth="1.6" />
+    <circle cx="12" cy="12" r="1.2" fill="currentColor" />
   </svg>
 );
 
@@ -77,18 +69,6 @@ const IconMail = (props) => (
   <svg viewBox="0 0 24 24" fill="none" {...props}>
     <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.6" />
     <path d="M3.5 6.5L12 13l8.5-6.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const IconPin = (props) => (
-  <svg viewBox="0 0 24 24" fill="none" {...props}>
-    <path
-      d="M12 21s7-6.3 7-11.5C19 5.9 15.9 3 12 3S5 5.9 5 9.5C5 14.7 12 21 12 21z"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinejoin="round"
-    />
-    <circle cx="12" cy="9.5" r="2.3" stroke="currentColor" strokeWidth="1.6" />
   </svg>
 );
 
@@ -128,55 +108,47 @@ const IconYoutube = (props) => (
 
 /* --------------------------------- Data ---------------------------------- */
 
-const FEATURES = [
-  { icon: IconGradCap, title: "World-Class Education", text: "Quality education with modern facilities and expert faculty." },
-  { icon: IconBook, title: "Diverse Programs", text: "Undergraduate, postgraduate and professional courses." },
-  { icon: IconStar, title: "Supportive Community", text: "A safe and inclusive environment for all students." },
-  { icon: IconGlobe, title: "Global Opportunities", text: "Build your future with international partnerships and networks." },
+const VALUE_PROPS = [
+  {
+    icon: IconPin,
+    title: "Our Vision",
+    text: "To be a globally recognized center of excellence in education, research and innovation.",
+  },
+  {
+    icon: IconHeart,
+    title: "Our Values",
+    text: "Excellence, Integrity, Inclusivity, Innovation, Service.",
+  },
+  {
+    icon: IconAperture,
+    title: "Our History",
+    text: "Founded in 2005, Northbridge University has grown into a leading institution of higher learning.",
+  },
 ];
 
-const STATS = [
-  { value: "20+", label: "Years of Excellence" },
-  { value: "8,000+", label: "Students" },
-  { value: "120+", label: "Qualified Faculty" },
-  { value: "50+", label: "Programs" },
-];
+// Unsplash photo by Daniel Uribarren — https://unsplash.com/photos/Urf2mQNlbUw
+const CAMPUS_IMAGE = "https://images.unsplash.com/photo-1670859229997-87b121ab0c2d";
 
-const PROGRAM_TABS = ["All", "Engineering", "Business", "Sciences", "Arts & Humanities", "Education"];
-
-const PROGRAMS = [
-  { title: "Computer Engineering", level: "Undergraduate", duration: "4 Years", category: "Engineering", image: "/images/program-computer-engineering.jpg" },
-  { title: "Business Administration", level: "Undergraduate", duration: "4 Years", category: "Business", image: "/images/program-business-administration.jpg" },
-  { title: "Medicine & Surgery", level: "Undergraduate", duration: "6 Years", category: "Sciences", image: "/images/program-medicine-surgery.jpg" },
-  { title: "Computer Science", level: "Undergraduate", duration: "4 Years", category: "Engineering", image: "/images/program-computer-science.jpg" },
-];
-
-/* -------------------------------- Component -------------------------------- */
-
-export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [activeTab, setActiveTab] = useState("All");
-  const heroRef = useRef(null);
+export default function About() {
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  const [scrolled, setScrolled] = React.useState(false);
   const location = useLocation();
 
   const isActive = (path) =>
     path === "/" ? location.pathname === "/" : location.pathname.startsWith(path);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [menuOpen]);
-
-  const visiblePrograms = activeTab === "All" ? PROGRAMS : PROGRAMS.filter((p) => p.category === activeTab);
 
   return (
     <div className="nu-page">
@@ -186,12 +158,7 @@ export default function Home() {
           <Link to="/" className="nu-logo">
             <span className="nu-logo__mark" aria-hidden="true">
               <svg viewBox="0 0 40 40" fill="none">
-                <path
-                  d="M20 3l15 6v9c0 9-6.3 15.8-15 19-8.7-3.2-15-10-15-19V9l15-6z"
-                  fill="#0D183A"
-                  stroke="#F1F5F9"
-                  strokeWidth="1.2"
-                />
+                <path d="M20 3l15 6v9c0 9-6.3 15.8-15 19-8.7-3.2-15-10-15-19V9l15-6z" fill="#0D183A" stroke="#F1F5F9" strokeWidth="1.2" />
                 <path d="M20 10l8 3.4v4.4c0 5-3.4 8.7-8 10.4-4.6-1.7-8-5.4-8-10.4v-4.4l8-3.4z" fill="#2563EB" />
               </svg>
             </span>
@@ -256,144 +223,42 @@ export default function Home() {
         onClick={() => setMenuOpen(false)}
       />
 
-      {/* --------------------------------- Hero --------------------------------- */}
-      <section className="nu-hero" ref={heroRef}>
-        <img className="nu-hero__bg" src="/images/hero-students.jpg" alt="Students walking on campus" />
-        <div className="nu-hero__scrim" />
-        <div className="nu-hero__inner">
-          <p className="nu-hero__eyebrow nu-anim nu-anim--1">EXCELLENCE &nbsp;•&nbsp; INTEGRITY &nbsp;•&nbsp; IMPACT</p>
-          <h1 className="nu-hero__title nu-anim nu-anim--2">Building Great Minds for a Brighter Future</h1>
-          <p className="nu-hero__text nu-anim nu-anim--3">
-            Northbridge University is a leading institution committed to academic excellence, character development
-            and creating opportunities for a better tomorrow.
-          </p>
-          <div className="nu-hero__actions nu-anim nu-anim--4">
-            <Link to="/admissions" className="nu-btn nu-btn--primary">
-              Apply Now
-            </Link>
-            <Link to="/academics" className="nu-btn nu-btn--outline">
-              Explore Our Programs
-            </Link>
-          </div>
+      {/* ----------------------------- Page header ----------------------------- */}
+      <section className="nu-page-header">
+        <img className="nu-page-header__bg" src={`${CAMPUS_IMAGE}?auto=format&fit=crop&w=1600&q=70`} alt="Northbridge University campus building" />
+        <div className="nu-page-header__scrim" />
+        <div className="nu-page-header__inner">
+          <h1 className="nu-anim nu-anim--1">About Us</h1>
+          <p className="nu-anim nu-anim--2">Our story, mission and vision</p>
         </div>
       </section>
 
-      {/* ------------------------------- Features ------------------------------- */}
-      <section className="nu-features">
-        <div className="nu-container nu-features__grid">
-          {FEATURES.map(({ icon: Icon, title, text }) => (
-            <div className="nu-feature-card" key={title}>
-              <span className="nu-feature-card__icon">
-                <Icon width="22" height="22" />
-              </span>
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* --------------------------------- About --------------------------------- */}
-      <section className="nu-legacy">
-        <div className="nu-container nu-legacy__grid">
-          <div className="nu-legacy__image">
-            <img src="/images/legacy-campus.jpg" alt="Northbridge University campus building" />
-          </div>
-          <div className="nu-legacy__content">
-            <p className="nu-eyebrow">ABOUT US</p>
-            <h2>A Legacy of Excellence</h2>
-            <p className="nu-legacy__text">
-              For over 20 years, Northbridge University has been a center of academic excellence, producing
-              graduates who make a difference in the world. We are dedicated to providing a transformative
-              educational experience that prepares students for lifelong success.
-            </p>
-            <Link to="/about" className="nu-btn nu-btn--primary nu-btn--icon">
-              Learn More <IconArrowRight width="16" height="16" />
-            </Link>
-            <div className="nu-stats">
-              {STATS.map((stat) => (
-                <div className="nu-stats__item" key={stat.label}>
-                  <span className="nu-stats__value">{stat.value}</span>
-                  <span className="nu-stats__label">{stat.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ------------------------------- Programs -------------------------------- */}
-      <section className="nu-programs" id="programs">
-        <div className="nu-container">
-          <div className="nu-programs__head">
-            <div>
-              <p className="nu-eyebrow">ACADEMICS</p>
-              <h2>Our Academic Programs</h2>
-              <p className="nu-programs__text">
-                Choose from a wide range of programs designed to help you achieve your goals and make a positive
-                impact in your field.
-              </p>
-            </div>
-            <Link to="/academics" className="nu-btn nu-btn--outline-dark nu-programs__view-all">
-              View All Programs
-            </Link>
-          </div>
-
-          <div className="nu-tabs" role="tablist" aria-label="Filter programs">
-            {PROGRAM_TABS.map((tab) => (
-              <button
-                key={tab}
-                role="tab"
-                aria-selected={activeTab === tab}
-                className={`nu-tab ${activeTab === tab ? "is-active" : ""}`}
-                onClick={() => setActiveTab(tab)}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
-
-          <div className="nu-programs__grid">
-            {visiblePrograms.map((program) => (
-              <article className="nu-program-card" key={program.title}>
-                <div className="nu-program-card__image">
-                  <img src={program.image} alt={program.title} />
-                </div>
-                <div className="nu-program-card__body">
-                  <h3>{program.title}</h3>
-                  <div className="nu-program-card__meta">
-                    <span className="nu-badge">{program.level}</span>
-                    <span className="nu-program-card__duration">{program.duration}</span>
-                  </div>
-                  <Link to="/academics" className="nu-link-arrow">
-                    Learn More <IconArrowRight width="14" height="14" />
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------------------------------- CTA ---------------------------------- */}
-      <section className="nu-cta" id="apply">
-        <img className="nu-cta__bg" src="/images/cta-graduate.jpg" alt="Graduate looking at campus" />
-        <div className="nu-cta__scrim" />
-        <div className="nu-container nu-cta__inner">
-          <div>
-            <h2>Ready to Join Our Community?</h2>
+      {/* ------------------------------- Mission -------------------------------- */}
+      <section className="nu-mission">
+        <div className="nu-container nu-mission__grid">
+          <div className="nu-mission__content">
+            <h2>Our Mission</h2>
             <p>
-              Take the first step towards a brighter future. Apply now and become part of a university that believes
-              in your potential.
+              To provide world-class education, foster innovation, and develop future leaders who will contribute to
+              a better and more sustainable world.
             </p>
           </div>
-          <div className="nu-cta__actions">
-            <Link to="/admissions" className="nu-btn nu-btn--primary">
-              Apply Now
-            </Link>
-            <Link to="/admissions" className="nu-cta__link">
-              Learn About Admissions
-            </Link>
+          <div className="nu-mission__image">
+            <img src={`${CAMPUS_IMAGE}?auto=format&fit=crop&w=900&h=650&q=70`} alt="Northbridge University campus building" />
+          </div>
+        </div>
+
+        <div className="nu-container">
+          <div className="nu-values">
+            {VALUE_PROPS.map(({ icon: Icon, title, text }) => (
+              <div className="nu-value-card" key={title}>
+                <span className="nu-value-card__icon">
+                  <Icon width="20" height="20" />
+                </span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

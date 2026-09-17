@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import "./home.css";
+import "./academics.css";
 
 /* ---------------------------- Icon components ---------------------------- */
 
@@ -23,42 +23,15 @@ const IconClose = (props) => (
   </svg>
 );
 
+const IconChevronDown = (props) => (
+  <svg viewBox="0 0 24 24" fill="none" {...props}>
+    <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 const IconArrowRight = (props) => (
   <svg viewBox="0 0 24 24" fill="none" {...props}>
     <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const IconGradCap = (props) => (
-  <svg viewBox="0 0 24 24" fill="none" {...props}>
-    <path d="M12 3L2 8l10 5 10-5-10-5z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-    <path d="M6 10.5V16c0 1.5 2.5 3 6 3s6-1.5 6-3v-5.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M21 9v6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-  </svg>
-);
-
-const IconBook = (props) => (
-  <svg viewBox="0 0 24 24" fill="none" {...props}>
-    <path d="M4 5.5C4 4.7 4.7 4 5.5 4H12v16H5.5c-.8 0-1.5-.7-1.5-1.5v-13z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-    <path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H12v16h6.5c.8 0 1.5-.7 1.5-1.5v-13z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-  </svg>
-);
-
-const IconStar = (props) => (
-  <svg viewBox="0 0 24 24" fill="none" {...props}>
-    <path
-      d="M12 2c.6 3.6 2.4 5.4 6 6-3.6.6-5.4 2.4-6 6-.6-3.6-2.4-5.4-6-6 3.6-.6 5.4-2.4 6-6z"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const IconGlobe = (props) => (
-  <svg viewBox="0 0 24 24" fill="none" {...props}>
-    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
-    <path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3z" stroke="currentColor" strokeWidth="1.6" />
   </svg>
 );
 
@@ -128,55 +101,67 @@ const IconYoutube = (props) => (
 
 /* --------------------------------- Data ---------------------------------- */
 
-const FEATURES = [
-  { icon: IconGradCap, title: "World-Class Education", text: "Quality education with modern facilities and expert faculty." },
-  { icon: IconBook, title: "Diverse Programs", text: "Undergraduate, postgraduate and professional courses." },
-  { icon: IconStar, title: "Supportive Community", text: "A safe and inclusive environment for all students." },
-  { icon: IconGlobe, title: "Global Opportunities", text: "Build your future with international partnerships and networks." },
-];
+const FILTER_TABS = ["All", "Engineering", "Business", "Sciences", "Arts & Humanities"];
+const LEVELS = ["All Levels", "Undergraduate", "Postgraduate"];
 
-const STATS = [
-  { value: "20+", label: "Years of Excellence" },
-  { value: "8,000+", label: "Students" },
-  { value: "120+", label: "Qualified Faculty" },
-  { value: "50+", label: "Programs" },
-];
-
-const PROGRAM_TABS = ["All", "Engineering", "Business", "Sciences", "Arts & Humanities", "Education"];
-
+// Unsplash — free to use, no attribution required (Unsplash License)
 const PROGRAMS = [
-  { title: "Computer Engineering", level: "Undergraduate", duration: "4 Years", category: "Engineering", image: "/images/program-computer-engineering.jpg" },
-  { title: "Business Administration", level: "Undergraduate", duration: "4 Years", category: "Business", image: "/images/program-business-administration.jpg" },
-  { title: "Medicine & Surgery", level: "Undergraduate", duration: "6 Years", category: "Sciences", image: "/images/program-medicine-surgery.jpg" },
-  { title: "Computer Science", level: "Undergraduate", duration: "4 Years", category: "Engineering", image: "/images/program-computer-science.jpg" },
+  {
+    title: "Computer Engineering",
+    description: "Build the technology of tomorrow with our cutting-edge engineering program.",
+    duration: "4 Years",
+    level: "Undergraduate",
+    category: "Engineering",
+    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=300&h=300&q=70",
+  },
+  {
+    title: "Business Administration",
+    description: "Develop leadership and management skills for a global career.",
+    duration: "4 Years",
+    level: "Undergraduate",
+    category: "Business",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=300&h=300&q=70",
+  },
+  {
+    title: "Medicine & Surgery",
+    description: "Train to make a difference in people's lives.",
+    duration: "6 Years",
+    level: "Undergraduate",
+    category: "Sciences",
+    image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=300&h=300&q=70",
+  },
 ];
 
-/* -------------------------------- Component -------------------------------- */
-
-export default function Home() {
+export default function Academics() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeTab, setActiveTab] = useState("All");
-  const heroRef = useRef(null);
+  const [level, setLevel] = useState("All Levels");
+  const [query, setQuery] = useState("");
   const location = useLocation();
 
   const isActive = (path) =>
     path === "/" ? location.pathname === "/" : location.pathname.startsWith(path);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [menuOpen]);
 
-  const visiblePrograms = activeTab === "All" ? PROGRAMS : PROGRAMS.filter((p) => p.category === activeTab);
+  const visiblePrograms = PROGRAMS.filter((p) => {
+    const matchesTab = activeTab === "All" || p.category === activeTab;
+    const matchesLevel = level === "All Levels" || p.level === level;
+    const matchesQuery = p.title.toLowerCase().includes(query.trim().toLowerCase());
+    return matchesTab && matchesLevel && matchesQuery;
+  });
 
   return (
     <div className="nu-page">
@@ -186,12 +171,7 @@ export default function Home() {
           <Link to="/" className="nu-logo">
             <span className="nu-logo__mark" aria-hidden="true">
               <svg viewBox="0 0 40 40" fill="none">
-                <path
-                  d="M20 3l15 6v9c0 9-6.3 15.8-15 19-8.7-3.2-15-10-15-19V9l15-6z"
-                  fill="#0D183A"
-                  stroke="#F1F5F9"
-                  strokeWidth="1.2"
-                />
+                <path d="M20 3l15 6v9c0 9-6.3 15.8-15 19-8.7-3.2-15-10-15-19V9l15-6z" fill="#0D183A" stroke="#F1F5F9" strokeWidth="1.2" />
                 <path d="M20 10l8 3.4v4.4c0 5-3.4 8.7-8 10.4-4.6-1.7-8-5.4-8-10.4v-4.4l8-3.4z" fill="#2563EB" />
               </svg>
             </span>
@@ -256,91 +236,50 @@ export default function Home() {
         onClick={() => setMenuOpen(false)}
       />
 
-      {/* --------------------------------- Hero --------------------------------- */}
-      <section className="nu-hero" ref={heroRef}>
-        <img className="nu-hero__bg" src="/images/hero-students.jpg" alt="Students walking on campus" />
-        <div className="nu-hero__scrim" />
-        <div className="nu-hero__inner">
-          <p className="nu-hero__eyebrow nu-anim nu-anim--1">EXCELLENCE &nbsp;•&nbsp; INTEGRITY &nbsp;•&nbsp; IMPACT</p>
-          <h1 className="nu-hero__title nu-anim nu-anim--2">Building Great Minds for a Brighter Future</h1>
-          <p className="nu-hero__text nu-anim nu-anim--3">
-            Northbridge University is a leading institution committed to academic excellence, character development
-            and creating opportunities for a better tomorrow.
-          </p>
-          <div className="nu-hero__actions nu-anim nu-anim--4">
-            <Link to="/admissions" className="nu-btn nu-btn--primary">
-              Apply Now
-            </Link>
-            <Link to="/academics" className="nu-btn nu-btn--outline">
-              Explore Our Programs
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ------------------------------- Features ------------------------------- */}
-      <section className="nu-features">
-        <div className="nu-container nu-features__grid">
-          {FEATURES.map(({ icon: Icon, title, text }) => (
-            <div className="nu-feature-card" key={title}>
-              <span className="nu-feature-card__icon">
-                <Icon width="22" height="22" />
-              </span>
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* --------------------------------- About --------------------------------- */}
-      <section className="nu-legacy">
-        <div className="nu-container nu-legacy__grid">
-          <div className="nu-legacy__image">
-            <img src="/images/legacy-campus.jpg" alt="Northbridge University campus building" />
-          </div>
-          <div className="nu-legacy__content">
-            <p className="nu-eyebrow">ABOUT US</p>
-            <h2>A Legacy of Excellence</h2>
-            <p className="nu-legacy__text">
-              For over 20 years, Northbridge University has been a center of academic excellence, producing
-              graduates who make a difference in the world. We are dedicated to providing a transformative
-              educational experience that prepares students for lifelong success.
-            </p>
-            <Link to="/about" className="nu-btn nu-btn--primary nu-btn--icon">
-              Learn More <IconArrowRight width="16" height="16" />
-            </Link>
-            <div className="nu-stats">
-              {STATS.map((stat) => (
-                <div className="nu-stats__item" key={stat.label}>
-                  <span className="nu-stats__value">{stat.value}</span>
-                  <span className="nu-stats__label">{stat.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+      {/* ----------------------------- Page header ----------------------------- */}
+      <section className="nu-page-header">
+        <img
+          className="nu-page-header__bg"
+          src="https://images.unsplash.com/photo-1670859229997-87b121ab0c2d?auto=format&fit=crop&w=1600&q=70"
+          alt="Northbridge University campus building"
+        />
+        <div className="nu-page-header__scrim" />
+        <div className="nu-page-header__inner">
+          <h1 className="nu-anim nu-anim--1">Academics</h1>
+          <p className="nu-anim nu-anim--2">Programs, departments and academic resources</p>
         </div>
       </section>
 
       {/* ------------------------------- Programs -------------------------------- */}
-      <section className="nu-programs" id="programs">
+      <section className="nu-explore">
         <div className="nu-container">
-          <div className="nu-programs__head">
-            <div>
-              <p className="nu-eyebrow">ACADEMICS</p>
-              <h2>Our Academic Programs</h2>
-              <p className="nu-programs__text">
-                Choose from a wide range of programs designed to help you achieve your goals and make a positive
-                impact in your field.
-              </p>
+          <h2>Explore Our Programs</h2>
+
+          <div className="nu-explore__controls">
+            <div className="nu-search">
+              <IconSearch width="18" height="18" />
+              <input
+                type="text"
+                placeholder="Search for a program..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                aria-label="Search for a program"
+              />
             </div>
-            <Link to="/academics" className="nu-btn nu-btn--outline-dark nu-programs__view-all">
-              View All Programs
-            </Link>
+            <div className="nu-select">
+              <select value={level} onChange={(e) => setLevel(e.target.value)} aria-label="Filter by level">
+                {LEVELS.map((lvl) => (
+                  <option key={lvl} value={lvl}>
+                    {lvl}
+                  </option>
+                ))}
+              </select>
+              <IconChevronDown width="16" height="16" />
+            </div>
           </div>
 
-          <div className="nu-tabs" role="tablist" aria-label="Filter programs">
-            {PROGRAM_TABS.map((tab) => (
+          <div className="nu-tabs" role="tablist" aria-label="Filter programs by department">
+            {FILTER_TABS.map((tab) => (
               <button
                 key={tab}
                 role="tab"
@@ -353,47 +292,26 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="nu-programs__grid">
+          <div className="nu-program-list">
+            {visiblePrograms.length === 0 && (
+              <p className="nu-program-list__empty">No programs match your search yet — try a different filter.</p>
+            )}
             {visiblePrograms.map((program) => (
-              <article className="nu-program-card" key={program.title}>
-                <div className="nu-program-card__image">
+              <Link to="/academics" className="nu-program-row" key={program.title}>
+                <div className="nu-program-row__image">
                   <img src={program.image} alt={program.title} />
                 </div>
-                <div className="nu-program-card__body">
+                <div className="nu-program-row__body">
                   <h3>{program.title}</h3>
-                  <div className="nu-program-card__meta">
+                  <p>{program.description}</p>
+                  <div className="nu-program-row__meta">
+                    <span className="nu-program-row__duration">{program.duration}</span>
                     <span className="nu-badge">{program.level}</span>
-                    <span className="nu-program-card__duration">{program.duration}</span>
                   </div>
-                  <Link to="/academics" className="nu-link-arrow">
-                    Learn More <IconArrowRight width="14" height="14" />
-                  </Link>
                 </div>
-              </article>
+                <IconArrowRight className="nu-program-row__arrow" width="18" height="18" />
+              </Link>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------------------------------- CTA ---------------------------------- */}
-      <section className="nu-cta" id="apply">
-        <img className="nu-cta__bg" src="/images/cta-graduate.jpg" alt="Graduate looking at campus" />
-        <div className="nu-cta__scrim" />
-        <div className="nu-container nu-cta__inner">
-          <div>
-            <h2>Ready to Join Our Community?</h2>
-            <p>
-              Take the first step towards a brighter future. Apply now and become part of a university that believes
-              in your potential.
-            </p>
-          </div>
-          <div className="nu-cta__actions">
-            <Link to="/admissions" className="nu-btn nu-btn--primary">
-              Apply Now
-            </Link>
-            <Link to="/admissions" className="nu-cta__link">
-              Learn About Admissions
-            </Link>
           </div>
         </div>
       </section>
