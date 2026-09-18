@@ -144,12 +144,42 @@ const STATS = [
 
 const PROGRAM_TABS = ["All", "Engineering", "Business", "Sciences", "Arts & Humanities", "Education"];
 
+// Unsplash — free to use, no attribution required (Unsplash License)
 const PROGRAMS = [
-  { title: "Computer Engineering", level: "Undergraduate", duration: "4 Years", category: "Engineering", image: "/images/program-computer-engineering.jpg" },
-  { title: "Business Administration", level: "Undergraduate", duration: "4 Years", category: "Business", image: "/images/program-business-administration.jpg" },
-  { title: "Medicine & Surgery", level: "Undergraduate", duration: "6 Years", category: "Sciences", image: "/images/program-medicine-surgery.jpg" },
-  { title: "Computer Science", level: "Undergraduate", duration: "4 Years", category: "Engineering", image: "/images/program-computer-science.jpg" },
+  {
+    title: "Computer Engineering",
+    level: "Undergraduate",
+    duration: "4 Years",
+    category: "Engineering",
+    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=500&h=380&q=70",
+  },
+  {
+    title: "Business Administration",
+    level: "Undergraduate",
+    duration: "4 Years",
+    category: "Business",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=500&h=380&q=70",
+  },
+  {
+    title: "Medicine & Surgery",
+    level: "Undergraduate",
+    duration: "6 Years",
+    category: "Sciences",
+    image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=500&h=380&q=70",
+  },
+  {
+    title: "Computer Science",
+    level: "Undergraduate",
+    duration: "4 Years",
+    category: "Engineering",
+    image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=500&h=380&q=70",
+  },
 ];
+
+// Unsplash — free to use, no attribution required (Unsplash License)
+const HERO_IMAGE = "https://images.unsplash.com/photo-1760111085279-6c4b6d831acc?auto=format&fit=crop&w=1600&q=70";
+const LEGACY_IMAGE = "https://images.unsplash.com/photo-1670859229997-87b121ab0c2d?auto=format&fit=crop&w=900&h=650&q=70";
+const CTA_IMAGE = "https://images.unsplash.com/photo-1760348082270-3a46a3512850?auto=format&fit=crop&w=1600&q=70";
 
 /* -------------------------------- Component -------------------------------- */
 
@@ -196,7 +226,7 @@ export default function Home() {
               </svg>
             </span>
             <span className="nu-logo__text">
-              Northbridge
+              Nigerian
               <br />
               University
             </span>
@@ -207,7 +237,6 @@ export default function Home() {
             <Link to="/about" className={`nu-nav__link${isActive("/about") ? " is-active" : ""}`}>About</Link>
             <Link to="/academics" className={`nu-nav__link${isActive("/academics") ? " is-active" : ""}`}>Academics</Link>
             <Link to="/admissions" className={`nu-nav__link${isActive("/admissions") ? " is-active" : ""}`}>Admissions</Link>
-            <Link to="/departments" className={`nu-nav__link${isActive("/departments") ? " is-active" : ""}`}>Departments</Link>
             <Link to="/news-events" className={`nu-nav__link${isActive("/news-events") ? " is-active" : ""}`}>News & Events</Link>
             <Link to="/gallery" className={`nu-nav__link${isActive("/gallery") ? " is-active" : ""}`}>Gallery</Link>
             <Link to="/contact" className={`nu-nav__link${isActive("/contact") ? " is-active" : ""}`}>Contact</Link>
@@ -230,7 +259,7 @@ export default function Home() {
       {/* -------------------------- Mobile menu -------------------------- */}
       <div className={`nu-mobile-menu ${menuOpen ? "is-open" : ""}`}>
         <div className="nu-mobile-menu__header">
-          <span className="nu-logo__text nu-logo__text--dark">Northbridge University</span>
+          <span className="nu-logo__text nu-logo__text--dark">Nigerian University</span>
           <button className="nu-icon-btn" aria-label="Close menu" onClick={() => setMenuOpen(false)}>
             <IconClose width="22" height="22" />
           </button>
@@ -240,7 +269,6 @@ export default function Home() {
           <Link to="/about" className={isActive("/about") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>About</Link>
           <Link to="/academics" className={isActive("/academics") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>Academics</Link>
           <Link to="/admissions" className={isActive("/admissions") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>Admissions</Link>
-          <Link to="/departments" className={isActive("/departments") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>Departments</Link>
           <Link to="/news-events" className={isActive("/news-events") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>News & Events</Link>
           <Link to="/gallery" className={isActive("/gallery") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>Gallery</Link>
           <Link to="/contact" className={isActive("/contact") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>Contact</Link>
@@ -258,13 +286,13 @@ export default function Home() {
 
       {/* --------------------------------- Hero --------------------------------- */}
       <section className="nu-hero" ref={heroRef}>
-        <img className="nu-hero__bg" src="/images/hero-students.jpg" alt="Students walking on campus" />
+        <img className="nu-hero__bg" src={HERO_IMAGE} alt="Students walking through a campus archway" />
         <div className="nu-hero__scrim" />
         <div className="nu-hero__inner">
           <p className="nu-hero__eyebrow nu-anim nu-anim--1">EXCELLENCE &nbsp;•&nbsp; INTEGRITY &nbsp;•&nbsp; IMPACT</p>
           <h1 className="nu-hero__title nu-anim nu-anim--2">Building Great Minds for a Brighter Future</h1>
           <p className="nu-hero__text nu-anim nu-anim--3">
-            Northbridge University is a leading institution committed to academic excellence, character development
+            Nigerian University is a leading institution committed to academic excellence, character development
             and creating opportunities for a better tomorrow.
           </p>
           <div className="nu-hero__actions nu-anim nu-anim--4">
@@ -297,13 +325,13 @@ export default function Home() {
       <section className="nu-legacy">
         <div className="nu-container nu-legacy__grid">
           <div className="nu-legacy__image">
-            <img src="/images/legacy-campus.jpg" alt="Northbridge University campus building" />
+            <img src={LEGACY_IMAGE} alt="Nigerian University campus building" />
           </div>
           <div className="nu-legacy__content">
             <p className="nu-eyebrow">ABOUT US</p>
             <h2>A Legacy of Excellence</h2>
             <p className="nu-legacy__text">
-              For over 20 years, Northbridge University has been a center of academic excellence, producing
+              For over 20 years, Nigerian University has been a center of academic excellence, producing
               graduates who make a difference in the world. We are dedicated to providing a transformative
               educational experience that prepares students for lifelong success.
             </p>
@@ -377,7 +405,7 @@ export default function Home() {
 
       {/* ---------------------------------- CTA ---------------------------------- */}
       <section className="nu-cta" id="apply">
-        <img className="nu-cta__bg" src="/images/cta-graduate.jpg" alt="Graduate looking at campus" />
+        <img className="nu-cta__bg" src={CTA_IMAGE} alt="Graduate looking at campus" />
         <div className="nu-cta__scrim" />
         <div className="nu-container nu-cta__inner">
           <div>
@@ -409,7 +437,7 @@ export default function Home() {
               </svg>
             </span>
             <span className="nu-logo__text">
-              Northbridge
+              Nigerian
               <br />
               University
             </span>
@@ -444,7 +472,7 @@ export default function Home() {
                 <IconPhone width="16" height="16" /> <span>+234 803 123 4567</span>
               </li>
               <li>
-                <IconMail width="16" height="16" /> <span>info@northbridge.edu.ng</span>
+                <IconMail width="16" height="16" /> <span>info@nigerian.edu.ng</span>
               </li>
               <li>
                 <IconPin width="16" height="16" /> <span>123 Education Road, Lagos, Nigeria</span>
@@ -461,7 +489,7 @@ export default function Home() {
         </div>
 
         <div className="nu-container nu-footer__bottom">
-          <p>© 2025 Northbridge University. All rights reserved.</p>
+          <p>© 2026 Nigerian University. All rights reserved.</p>
           <div className="nu-footer__bottom-links">
             <Link to="/privacy-policy">Privacy Policy</Link>
             <Link to="/terms-of-service">Terms of Service</Link>

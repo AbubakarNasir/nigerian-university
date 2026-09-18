@@ -161,7 +161,7 @@ export default function Contact() {
               </svg>
             </span>
             <span className="nu-logo__text">
-              Northbridge
+              Nigerian
               <br />
               University
             </span>
@@ -172,7 +172,6 @@ export default function Contact() {
             <Link to="/about" className={`nu-nav__link${isActive("/about") ? " is-active" : ""}`}>About</Link>
             <Link to="/academics" className={`nu-nav__link${isActive("/academics") ? " is-active" : ""}`}>Academics</Link>
             <Link to="/admissions" className={`nu-nav__link${isActive("/admissions") ? " is-active" : ""}`}>Admissions</Link>
-            <Link to="/departments" className={`nu-nav__link${isActive("/departments") ? " is-active" : ""}`}>Departments</Link>
             <Link to="/news-events" className={`nu-nav__link${isActive("/news-events") ? " is-active" : ""}`}>News & Events</Link>
             <Link to="/gallery" className={`nu-nav__link${isActive("/gallery") ? " is-active" : ""}`}>Gallery</Link>
             <Link to="/contact" className={`nu-nav__link${isActive("/contact") ? " is-active" : ""}`}>Contact</Link>
@@ -195,7 +194,7 @@ export default function Contact() {
       {/* -------------------------- Mobile menu -------------------------- */}
       <div className={`nu-mobile-menu ${menuOpen ? "is-open" : ""}`}>
         <div className="nu-mobile-menu__header">
-          <span className="nu-logo__text nu-logo__text--dark">Northbridge University</span>
+          <span className="nu-logo__text nu-logo__text--dark">Nigerian University</span>
           <button className="nu-icon-btn" aria-label="Close menu" onClick={() => setMenuOpen(false)}>
             <IconClose width="22" height="22" />
           </button>
@@ -205,7 +204,6 @@ export default function Contact() {
           <Link to="/about" className={isActive("/about") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>About</Link>
           <Link to="/academics" className={isActive("/academics") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>Academics</Link>
           <Link to="/admissions" className={isActive("/admissions") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>Admissions</Link>
-          <Link to="/departments" className={isActive("/departments") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>Departments</Link>
           <Link to="/news-events" className={isActive("/news-events") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>News & Events</Link>
           <Link to="/gallery" className={isActive("/gallery") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>Gallery</Link>
           <Link to="/contact" className={isActive("/contact") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>Contact</Link>
@@ -226,7 +224,7 @@ export default function Contact() {
         <img
           className="nu-page-header__bg"
           src="https://images.unsplash.com/photo-1670859229997-87b121ab0c2d?auto=format&fit=crop&w=1600&q=70"
-          alt="Northbridge University campus building"
+          alt="Nigerian University campus building"
         />
         <div className="nu-page-header__scrim" />
         <div className="nu-page-header__inner">
@@ -258,7 +256,7 @@ export default function Contact() {
                 <span className="nu-touch__icon">
                   <IconMail width="18" height="18" />
                 </span>
-                <span>info@northbridge.edu.ng</span>
+                <span>info@nigerian.edu.ng</span>
               </li>
               <li>
                 <span className="nu-touch__icon">
@@ -274,7 +272,7 @@ export default function Contact() {
 
             <div className="nu-touch__map">
               <iframe
-                title="Northbridge University location"
+                title="Nigerian University location"
                 src={MAP_EMBED_SRC}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -364,7 +362,7 @@ export default function Contact() {
               </svg>
             </span>
             <span className="nu-logo__text">
-              Northbridge
+              Nigerian
               <br />
               University
             </span>
@@ -399,7 +397,7 @@ export default function Contact() {
                 <IconPhone width="16" height="16" /> <span>+234 803 123 4567</span>
               </li>
               <li>
-                <IconMail width="16" height="16" /> <span>info@northbridge.edu.ng</span>
+                <IconMail width="16" height="16" /> <span>info@nigerian.edu.ng</span>
               </li>
               <li>
                 <IconPin width="16" height="16" /> <span>123 Education Road, Lagos, Nigeria</span>
@@ -416,7 +414,7 @@ export default function Contact() {
         </div>
 
         <div className="nu-container nu-footer__bottom">
-          <p>© 2025 Northbridge University. All rights reserved.</p>
+          <p>© 2026 Nigerian University. All rights reserved.</p>
           <div className="nu-footer__bottom-links">
             <Link to="/privacy-policy">Privacy Policy</Link>
             <Link to="/terms-of-service">Terms of Service</Link>

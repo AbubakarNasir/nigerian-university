@@ -122,7 +122,7 @@ const VALUE_PROPS = [
   {
     icon: IconAperture,
     title: "Our History",
-    text: "Founded in 2005, Northbridge University has grown into a leading institution of higher learning.",
+    text: "Founded in 2005, Nigerian University has grown into a leading institution of higher learning.",
   },
 ];
 
@@ -163,7 +163,7 @@ export default function About() {
               </svg>
             </span>
             <span className="nu-logo__text">
-              Northbridge
+              Nigerian
               <br />
               University
             </span>
@@ -174,7 +174,6 @@ export default function About() {
             <Link to="/about" className={`nu-nav__link${isActive("/about") ? " is-active" : ""}`}>About</Link>
             <Link to="/academics" className={`nu-nav__link${isActive("/academics") ? " is-active" : ""}`}>Academics</Link>
             <Link to="/admissions" className={`nu-nav__link${isActive("/admissions") ? " is-active" : ""}`}>Admissions</Link>
-            <Link to="/departments" className={`nu-nav__link${isActive("/departments") ? " is-active" : ""}`}>Departments</Link>
             <Link to="/news-events" className={`nu-nav__link${isActive("/news-events") ? " is-active" : ""}`}>News & Events</Link>
             <Link to="/gallery" className={`nu-nav__link${isActive("/gallery") ? " is-active" : ""}`}>Gallery</Link>
             <Link to="/contact" className={`nu-nav__link${isActive("/contact") ? " is-active" : ""}`}>Contact</Link>
@@ -197,7 +196,7 @@ export default function About() {
       {/* -------------------------- Mobile menu -------------------------- */}
       <div className={`nu-mobile-menu ${menuOpen ? "is-open" : ""}`}>
         <div className="nu-mobile-menu__header">
-          <span className="nu-logo__text nu-logo__text--dark">Northbridge University</span>
+          <span className="nu-logo__text nu-logo__text--dark">Nigerian University</span>
           <button className="nu-icon-btn" aria-label="Close menu" onClick={() => setMenuOpen(false)}>
             <IconClose width="22" height="22" />
           </button>
@@ -207,7 +206,6 @@ export default function About() {
           <Link to="/about" className={isActive("/about") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>About</Link>
           <Link to="/academics" className={isActive("/academics") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>Academics</Link>
           <Link to="/admissions" className={isActive("/admissions") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>Admissions</Link>
-          <Link to="/departments" className={isActive("/departments") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>Departments</Link>
           <Link to="/news-events" className={isActive("/news-events") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>News & Events</Link>
           <Link to="/gallery" className={isActive("/gallery") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>Gallery</Link>
           <Link to="/contact" className={isActive("/contact") ? "is-active" : ""} onClick={() => setMenuOpen(false)}>Contact</Link>
@@ -225,7 +223,7 @@ export default function About() {
 
       {/* ----------------------------- Page header ----------------------------- */}
       <section className="nu-page-header">
-        <img className="nu-page-header__bg" src={`${CAMPUS_IMAGE}?auto=format&fit=crop&w=1600&q=70`} alt="Northbridge University campus building" />
+        <img className="nu-page-header__bg" src={`${CAMPUS_IMAGE}?auto=format&fit=crop&w=1600&q=70`} alt="Nigerian University campus building" />
         <div className="nu-page-header__scrim" />
         <div className="nu-page-header__inner">
           <h1 className="nu-anim nu-anim--1">About Us</h1>
@@ -244,7 +242,7 @@ export default function About() {
             </p>
           </div>
           <div className="nu-mission__image">
-            <img src={`${CAMPUS_IMAGE}?auto=format&fit=crop&w=900&h=650&q=70`} alt="Northbridge University campus building" />
+            <img src={`${CAMPUS_IMAGE}?auto=format&fit=crop&w=900&h=650&q=70`} alt="Nigerian University campus building" />
           </div>
         </div>
 
@@ -274,7 +272,7 @@ export default function About() {
               </svg>
             </span>
             <span className="nu-logo__text">
-              Northbridge
+              Nigerian
               <br />
               University
             </span>
@@ -309,7 +307,7 @@ export default function About() {
                 <IconPhone width="16" height="16" /> <span>+234 803 123 4567</span>
               </li>
               <li>
-                <IconMail width="16" height="16" /> <span>info@northbridge.edu.ng</span>
+                <IconMail width="16" height="16" /> <span>info@nigerian.edu.ng</span>
               </li>
               <li>
                 <IconPin width="16" height="16" /> <span>123 Education Road, Lagos, Nigeria</span>
@@ -326,7 +324,7 @@ export default function About() {
         </div>
 
         <div className="nu-container nu-footer__bottom">
-          <p>© 2025 Northbridge University. All rights reserved.</p>
+          <p>© 2026 Nigerian University. All rights reserved.</p>
           <div className="nu-footer__bottom-links">
             <Link to="/privacy-policy">Privacy Policy</Link>
             <Link to="/terms-of-service">Terms of Service</Link>
